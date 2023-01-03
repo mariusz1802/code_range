@@ -1,14 +1,13 @@
 body {
-    background: black;
-    color: white;
-    font-family: Arial;
- margin: 0 auto;
+  background: black;
+  color: white;
+  font-family: Arial;
+  margin: 0 auto;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    justify-content: center;
-
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  justify-content: center;
 }
