@@ -1,36 +1,17 @@
-console.log('Start');
+//factory function jest to funkcja która zwrac obiekt
+const list = () => {
+  const items = []
 
-//instead of giving return I gave callback function
-//thanks callback function we can handle asynchronious function
-
-function loginUser(name, password, callback) {
-  setTimeout(() => {
-    console.log('Now we  have the data');
-    callback({ userName: name });
-  }, 2000);
+  return {
+    addItem : (item) => items.push(item),
+    getItems : () => items,
+  }
 }
 
-function getUserVideos(name, callback) {
-  setTimeout(() => {
-    callback(['video1', 'video2', 'video3']);
-  }, 1000);
-}
+const list2 = list();
 
-function videoDetails(video, callback) {
-  setTimeout(() => {
-    callback('title of the video');
-  }, 2000);
-}
+list2.addItem('Create AI');
+list2.getItems(); // We have to items by invoke this function
+list2.items //undefined - encalpsulation or hermetization code by closures - we cannot achive that by class
+list2.addItem = ''
 
-//with this approach we get callback hell(werid structur of callbacks)
-const newUser = loginUser('TomaszChic', 12345, (user) => {
-  console.log(user.userName);
-  getUserVideos(user.userName, (videos) => {
-    console.log(videos);
-    videoDetails(videos[0], (title) => {
-        console.log(title);
-    })
-  });
-});
-
-console.log('End');
