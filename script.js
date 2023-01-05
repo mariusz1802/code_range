@@ -1,17 +1,25 @@
-//factory function jest to funkcja która zwrac obiekt
-const list = () => {
-  const items = []
+const recordable = (state) => ({
+  record : () => `I'm recordin a new ${state.type}!`,
+})
 
-  return {
-    addItem : (item) => items.push(item),
-    getItems : () => items,
-  }
+const sharable = (state) => ({
+share : () => `Spread a word about ${state.name}...`,
+})
+
+const watchable = (state) =>({
+  watch : () => `I'm watching right now: ${state.name}`
+})
+
+const movie = (name) => {
+  const state = {name : name, type: 'movie'}
+    return Object.assign({}, recordable(state), sharable(state), watchable(state));
 }
 
-const list2 = list();
 
-list2.addItem('Create AI');
-list2.getItems(); // We have to items by invoke this function
-list2.items //undefined - encalpsulation or hermetization code by closures - we cannot achive that by class
-list2.addItem = ''
 
+const latestMovie = movie('Kompozycja vs. Dziedziczenie');
+
+
+latestMovie.record(); //I'm recording a new movie!
+latestMovie.share(); //Spread a word about Kompozycja vs. Dziedziczenie ...
+latestMovie.watch() //I'm watching right now: Kompozycja vs. dziedziczenie
