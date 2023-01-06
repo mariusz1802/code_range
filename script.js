@@ -1,54 +1,35 @@
-// const recordable = (state) => ({
-//   record: () => `I'm recordin a new ${state.type}!`,
-// });
+/*
+Definition:
+REST:
+The rest parameter syntax allows a function to accept an indefinite number of arguments as an array, providing a way to represent variadic functions in JavaScript.
+*/
 
-// const sharable = (state) => ({
-//   share: () => `Spread a word about ${state.name}...`,
-// });
+//*********************Rest parameter example********************************
 
-// const watchable = (state) => ({
-//   watch: () => `I'm watching right now: ${state.name}`,
-// });
+function sum(...theArgs) {
+  let total = 0;
+  for (const arg of theArgs) {
+    total += arg;
+  }
+  return total;
+}
 
-// const movie = (name) => {
-//   const state = { name: name, type: "movie" };
-//   return Object.assign(
-//     {},
-//     recordable(state),
-//     sharable(state),
-//     watchable(state)
-//   );
-// };
+console.log(sum(1, 2, 3));
+//expected output: 6;
 
-// const latestMovie = movie("Kompozycja vs. Dziedziczenie");
+console.log(sum(1, 2, 3, 4));
+//expected output: 10;
 
-// latestMovie.record(); //I'm recording a new movie!
-// latestMovie.share(); //Spread a word about Kompozycja vs. Dziedziczenie ...
-// latestMovie.watch(); //I'm watching right now: Kompozycja vs. dziedziczenie
+//******************Spread syntax(...) example******************************
 
-const nameable = (state) => ({
-  showName: () => {
-    `This car name is ${state.name}`;
-  },
-});
+function sum(x, y, z) {
+  return x + y + z;
+}
 
-const speedable = (state) => ({
-  showSPeed: () => {
-    `${state.name} is quite fast: ${state.speed}`;
-  },
-});
+const numbers = [1, 2, 3];
 
-const gearable = (state) => ({
-  gearAmount: () => {
-    `${state.name}  is gearbox ${state.gearbox}`;
-  },
-});
+console.log(sum(...numbers));
+//expected output: 6
 
-const car = () => {
-  const state = { name: name, speed: speed, gearbox: gearbox };
-  return Object.assign({}, nameable(state), speedable(state), gearable(state));
-};
-
-const volvo = car("Volvo", "240km/h", "7");
-
-volvo.gearAmount();
+console.log(sum.apply(bull, numbers));
+//expected output: 6
