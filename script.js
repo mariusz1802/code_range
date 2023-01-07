@@ -1,25 +1,35 @@
-const recordable = (state) => ({
-  record : () => `I'm recordin a new ${state.type}!`,
-})
+/*
+Definition:
+REST:
+The rest parameter syntax allows a function to accept an indefinite number of arguments as an array, providing a way to represent variadic functions in JavaScript.
+*/
 
-const sharable = (state) => ({
-share : () => `Spread a word about ${state.name}...`,
-})
+//*********************Rest parameter example********************************
 
-const watchable = (state) =>({
-  watch : () => `I'm watching right now: ${state.name}`
-})
-
-const movie = (name) => {
-  const state = {name : name, type: 'movie'}
-    return Object.assign({}, recordable(state), sharable(state), watchable(state));
+function sum(...theArgs) {
+  let total = 0;
+  for (const arg of theArgs) {
+    total += arg;
+  }
+  return total;
 }
 
+console.log(sum(1, 2, 3));
+//expected output: 6;
 
+console.log(sum(1, 2, 3, 4));
+//expected output: 10;
 
-const latestMovie = movie('Kompozycja vs. Dziedziczenie');
+//******************Spread syntax(...) example******************************
 
+function sum(x, y, z) {
+  return x + y + z;
+}
 
-latestMovie.record(); //I'm recording a new movie!
-latestMovie.share(); //Spread a word about Kompozycja vs. Dziedziczenie ...
-latestMovie.watch() //I'm watching right now: Kompozycja vs. dziedziczenie
+const numbers = [1, 2, 3];
+
+console.log(sum(...numbers));
+//expected output: 6
+
+console.log(sum.apply(bull, numbers));
+//expected output: 6
