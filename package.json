@@ -1,0 +1,23 @@
+{
+  "name": "code-range",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariusz1802/code_range.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariusz1802/code_range/issues"
+  },
+  "homepage": "https://github.com/mariusz1802/code_range#readme",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
