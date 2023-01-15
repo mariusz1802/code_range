@@ -1,35 +1,31 @@
-/*
-Definition:
-REST:
-The rest parameter syntax allows a function to accept an indefinite number of arguments as an array, providing a way to represent variadic functions in JavaScript.
-*/
-
-//*********************Rest parameter example********************************
-
-function sum(...theArgs) {
-  let total = 0;
-  for (const arg of theArgs) {
-    total += arg;
+//Code without NullObject pattern:
+/*We need a lot of if statments to check is user exist thats can provide additional problems on the web.
+ scriptNullUser.js is file with same example but with NullObject pattern */
+class User {
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
   }
-  return total;
+  hasAccess() {
+    return this.name === "Bob";
+  }
 }
 
-console.log(sum(1, 2, 3));
-//expected output: 6;
+const users = [new User(1, "Bob"), new User(2, "John")];
 
-console.log(sum(1, 2, 3, 4));
-//expected output: 10;
-
-//******************Spread syntax(...) example******************************
-
-function sum(x, y, z) {
-  return x + y + z;
+function getUser(id) {
+  return users.find((user) => user.id === id);
 }
 
-const numbers = [1, 2, 3];
+function printUser(id) {
+  const user = getUser(id);
+  let name = "Guest";
+  if (user != null && user.name != null) name = user.name;
+  console.log("Hello " + name);
 
-console.log(sum(...numbers));
-//expected output: 6
-
-console.log(sum.apply(bull, numbers));
-//expected output: 6
+  if (user != null && user.hasAccess != null && user.hasAccess()) {
+    console.log("yOU HAVE ACCESSS");
+  } else {
+    console.log("You are not allowed here");
+  }
+}
