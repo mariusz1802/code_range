@@ -1,35 +1,71 @@
-/*
-Definition:
-REST:
-The rest parameter syntax allows a function to accept an indefinite number of arguments as an array, providing a way to represent variadic functions in JavaScript.
-*/
+// const container = document.querySelector('.container');
+// const button = document.querySelector('button');
+// const p = document.querySelector('p');
+// const h1 = document.querySelector('h1');
 
-//*********************Rest parameter example********************************
 
-function sum(...theArgs) {
-  let total = 0;
-  for (const arg of theArgs) {
-    total += arg;
+// container.addEventListener('click', (event)=> {
+//   const el = event.target.tagName;
+//   console.log(`kliknieto: ${el}` )
+//   alert('container clicked')
+// });
+
+
+
+
+// button.addEventListener('click', ()=> {
+//   alert('button Clicked')
+// })
+
+// p.addEventListener('click', ()=> {
+//   alert('p clicked');
+// })
+
+// h1.addEventListener('click', ()=> {
+//   alert('h1 clicked');
+// })
+
+
+
+
+
+const body = document.body;
+const btnClose = document.querySelector('.closeBtn');
+const outer = document.querySelector('.outer');
+const container = document.querySelector('.container');
+
+
+
+btnClose.addEventListener("click", (e)=> {
+console.log("close")
+close();
+e.stopPropagation();
+}, );
+
+
+
+outer.addEventListener('click', (e)=> {
+  const target = e.target.classList.contains('outer');
+  if(target){
+    close();
+  }else{
+    console.log("I nie stalo sie nic")
   }
-  return total;
+}, )
+
+
+function close() {
+container.classList.add('hide')
+
 }
 
-console.log(sum(1, 2, 3));
-//expected output: 6;
 
-console.log(sum(1, 2, 3, 4));
-//expected output: 10;
 
-//******************Spread syntax(...) example******************************
 
-function sum(x, y, z) {
-  return x + y + z;
-}
 
-const numbers = [1, 2, 3];
 
-console.log(sum(...numbers));
-//expected output: 6
 
-console.log(sum.apply(bull, numbers));
-//expected output: 6
+
+
+
+
