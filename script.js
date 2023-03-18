@@ -1,19 +1,34 @@
-console.log("start");
-
-function LoginUser(name, password) {
+const login = (login, pass) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve({ name: name, password: password });
+      resolve({ UserLog: login });
     }, 2000);
   });
-}
+};
 
-LoginUser("Mariusz", 1234)
-  .then((user) => {
-    console.log(user.name);
-  })
-  .catch((err) => {
-    console.log(err);
+const video = (login, video) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({ userVideo: video });
+    }, 2000);
   });
+};
 
-console.log("end");
+const emails = (userName, email) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({ userEmail: email });
+    }, 2000);
+  });
+};
+
+const loginUser = login("mariusz", "Janovip");
+const videoUser = video("mariusz", "ojciec chcesztny");
+const emailUser = emails("mariusz", "mario@yahoo.pl");
+
+loginUser.then((el) => {
+  video(el.UserLog, "godfather").then((el) => {
+    el.userVideo;
+    emails(el.UserLog, "mario@yahoo.pl").then((el) => console.log(el));
+  });
+});
