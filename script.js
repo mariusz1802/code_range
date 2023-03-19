@@ -1,34 +1,49 @@
-const login = (login, pass) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({ UserLog: login });
-    }, 2000);
-  });
-};
+//EXAMPLE WITH SUPER SET IN CLASS
 
-const video = (login, video) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({ userVideo: video });
-    }, 2000);
-  });
-};
+class Car{
+  constructor(name, speed){
+    this.name = name;
+    this.speed = speed;
+  }
 
-const emails = (userName, email) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({ userEmail: email });
-    }, 2000);
-  });
-};
+introduce() {
+  console.log(`This is ${this.name}`)
+}
 
-const loginUser = login("mariusz", "Janovip");
-const videoUser = video("mariusz", "ojciec chcesztny");
-const emailUser = emails("mariusz", "mario@yahoo.pl");
+speedLimit() {
+  console.log(`This speed limit is ${this.speed}`)
+}
+}
 
-loginUser.then((el) => {
-  video(el.UserLog, "godfather").then((el) => {
-    el.userVideo;
-    emails(el.UserLog, "mario@yahoo.pl").then((el) => console.log(el));
-  });
-});
+
+class Motorbike extends Car{
+    constructor(name, speed, type){
+      super(name, speed);
+      this.type = type;
+    }
+
+    showBike(){
+      super.introduce();
+      console.log("This motorbike is amazing")
+    }
+
+    whenSunny(){
+        console.log(`When we have sunny day max speed is ${this.speed + 20}`)
+    }
+
+}
+
+
+const triumph = new Motorbike("speed triple", 250, "naked");
+const BMW = new Motorbike("1000RR", 330, "sport" );
+
+
+triumph.speedLimit();
+
+triumph.whenSunny();
+BMW.showBike();
+BMW.speedLimit();
+
+
+
+
