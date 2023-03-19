@@ -1,5 +1,4 @@
 body {
-  background: white;
   color: white;
   font-family: Arial;
   margin: auto;
@@ -14,57 +13,6 @@ form {
   justify-content: center;
 }
 
-.container{
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  border: 10px solid white;
-  justify-items: center;
-  padding: 20px;
-  align-items: center;
-  background: green;
-  justify-content: center;
-
-
-}
-
-.button{
-  padding: 10px;
-  font-size: 1.2rem;
-  background: linear-gradient(yellow, rgb(255, 187, 0));
-  border: none;
-  border-radius: 10%;
-  font-weight: 700;
-}
-.buttonWrapper{
-width: 100%;
-  display: flex;
-}
-.closeBtn{
-  margin: 0 0 0 auto;
+.black {
   background: black;
-  color: white;
-  border: none;
-  padding:5px;
-  border-radius: 3px;
-  font-size: 1rem;
-  font-weight: 700;
-
-}
-
-.closeBtn:hover{
-  cursor: pointer;
-
-}
-
-.outer{
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0, 0.6);
-}
-
-
-
-.hide{
-  display : none;
 }

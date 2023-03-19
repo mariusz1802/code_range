@@ -1,71 +1,34 @@
-// const container = document.querySelector('.container');
-// const button = document.querySelector('button');
-// const p = document.querySelector('p');
-// const h1 = document.querySelector('h1');
+const login = (login, pass) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({ UserLog: login });
+    }, 2000);
+  });
+};
 
+const video = (login, video) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({ userVideo: video });
+    }, 2000);
+  });
+};
 
-// container.addEventListener('click', (event)=> {
-//   const el = event.target.tagName;
-//   console.log(`kliknieto: ${el}` )
-//   alert('container clicked')
-// });
+const emails = (userName, email) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({ userEmail: email });
+    }, 2000);
+  });
+};
 
+const loginUser = login("mariusz", "Janovip");
+const videoUser = video("mariusz", "ojciec chcesztny");
+const emailUser = emails("mariusz", "mario@yahoo.pl");
 
-
-
-// button.addEventListener('click', ()=> {
-//   alert('button Clicked')
-// })
-
-// p.addEventListener('click', ()=> {
-//   alert('p clicked');
-// })
-
-// h1.addEventListener('click', ()=> {
-//   alert('h1 clicked');
-// })
-
-
-
-
-
-const body = document.body;
-const btnClose = document.querySelector('.closeBtn');
-const outer = document.querySelector('.outer');
-const container = document.querySelector('.container');
-
-
-
-btnClose.addEventListener("click", (e)=> {
-console.log("close")
-close();
-e.stopPropagation();
-}, );
-
-
-
-outer.addEventListener('click', (e)=> {
-  const target = e.target.classList.contains('outer');
-  if(target){
-    close();
-  }else{
-    console.log("I nie stalo sie nic")
-  }
-}, )
-
-
-function close() {
-container.classList.add('hide')
-
-}
-
-
-
-
-
-
-
-
-
-
-
+loginUser.then((el) => {
+  video(el.UserLog, "godfather").then((el) => {
+    el.userVideo;
+    emails(el.UserLog, "mario@yahoo.pl").then((el) => console.log(el));
+  });
+});
