@@ -1,34 +1,62 @@
-const login = (login, pass) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({ UserLog: login });
-    }, 2000);
-  });
-};
+class Pancake {
+  constructor() {
+    this.ingridients = ["cake"];
+    this.price = 10;
+  }
+  getSetItems() {
+    return this.ingridients;
+  }
+  getPrice() {
+    return this.price;
+  }
+}
 
-const video = (login, video) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({ userVideo: video });
-    }, 2000);
-  });
-};
+class SetAddOn {
+  constructor(cakeSet) {
+    this.ingridients = [];
+    this.price = 0;
+    this.cakeSet = cakeSet;
+  }
+  getSetItems() {
+    return [...this.cakeSet.getSetItems(), ...this.ingridients];
+  }
 
-const emails = (userName, email) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({ userEmail: email });
-    }, 2000);
-  });
-};
+  getPrice() {
+    return this.cakeSet.getPrice() + this.price;
+  }
+}
 
-const loginUser = login("mariusz", "Janovip");
-const videoUser = video("mariusz", "ojciec chcesztny");
-const emailUser = emails("mariusz", "mario@yahoo.pl");
+class Strawberry extends SetAddOn {
+  constructor(cakeSet) {
+    super();
+    this.ingridients = ["strawberries"];
+    this.price = 3;
+    this.cakeSet = cakeSet;
+  }
+}
 
-loginUser.then((el) => {
-  video(el.UserLog, "godfather").then((el) => {
-    el.userVideo;
-    emails(el.UserLog, "mario@yahoo.pl").then((el) => console.log(el));
-  });
-});
+class whippedCream extends SetAddOn {
+  constructor(cakeSet) {
+    super();
+    this.ingridients = ["whippedCream"];
+    this.price = 4;
+    this.cakeSet = cakeSet;
+  }
+}
+
+console.log("1. Pancake only");
+const pancakeSet = new Pancake();
+console.log(pancakeSet.getSetItems());
+console.log("Price: ", pancakeSet.getPrice());
+
+console.log("2. Pancace set with strawberries");
+const withStrawBerries = new Strawberry(pancakeSet);
+console.log(withStrawBerries.getSetItems());
+console.log("Price: ", withStrawBerries.getPrice());
+
+console.log("3. Pancake with strawberry and whippedcream");
+const withStrawBerriesAndWhippedCream = new whippedCream(
+  new Strawberry(pancakeSet)
+);
+console.log(withStrawBerriesAndWhippedCream.getSetItems());
+console.log(withStrawBerriesAndWhippedCream.getPrice());
